@@ -15,7 +15,10 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "gatsby": "^2.26.1",
+    "gatsby-source-filesystem": "^2.9.0",
+    "nes.css": "^2.3.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   }
