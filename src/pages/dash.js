@@ -26,6 +26,7 @@ const DashPage = ({ location }) => {
 
     if (balance - amount <= -91) {
       setNoCash(true);
+      setAmount("");
       return;
     }
 
@@ -48,6 +49,7 @@ const DashPage = ({ location }) => {
     }
     setNotes(currentNotes);
     setBalance((x) => x - amount);
+    setAmount("");
   };
 
   const handleInput = (e) => {
