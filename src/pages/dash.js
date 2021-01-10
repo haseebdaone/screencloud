@@ -13,8 +13,19 @@ const DashPage = ({ location }) => {
   });
 
   useEffect(() => {
-    if (location) {
+    if (location && location.state) {
+      console.log(location);
       setBalance(location.state.currentBalance);
+    } else {
+      screencloud
+        .post("/api/pin", {
+          pin: "1111",
+        })
+        .then(({ data, status }) => {
+          if (status === 200) {
+            setBalance(data.currentBalance);
+          }
+        });
     }
   }, []);
 
