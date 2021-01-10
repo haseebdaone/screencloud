@@ -9,3 +9,6 @@ npm start
 ```
 
 or <a href="https://keen-haibt-67d82f.netlify.app">Click this link</a>
+
+The background photo I use, is a picture I took in the city of Yogyakarta in Indonesia.
+Very appropriately has a Pikachu in it.
