@@ -7,3 +7,5 @@ Then run the following commands
 npm install
 npm start
 ```
+
+or <a href="https://keen-haibt-67d82f.netlify.app">Click this link</a>
