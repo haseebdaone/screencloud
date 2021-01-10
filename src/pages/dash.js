@@ -5,6 +5,7 @@ import screencloud from "../api/screencloud";
 const DashPage = ({ location }) => {
   const [balance, setBalance] = useState(0);
   const [amount, setAmount] = useState("");
+  const [noCash, setNoCash] = useState(false);
   const [notes, setNotes] = useState({
     5: Array.from({ length: 4 }, (v, i) => i),
     20: Array.from({ length: 7 }, (v, i) => i),
@@ -19,11 +20,14 @@ const DashPage = ({ location }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(amount);
     let totalAmount = 0;
     let currentNotes = { ...notes };
     let keys = ["5", "20", "10"];
-    console.log(keys);
+
+    if (balance - amount <= -91) {
+      setNoCash(true);
+      return;
+    }
 
     while (totalAmount < amount) {
       keys.forEach((x) => {
@@ -50,13 +54,23 @@ const DashPage = ({ location }) => {
     setAmount(e.target.value);
   };
 
+  let balanceClass = "";
+
+  if (balance < 0) {
+    balanceClass = "nes-text is-error";
+  }
+
   return (
     <Layout rootClassName="enterLayoutContainer">
       <div className="textCenter mb-8">
         <h1 className="nes-text">
-          Current Balance:{" "}
-          <span className={balance < 0 && "nes-text is-error"}>{balance}</span>
+          Current Balance: <span className={balanceClass}>{balance}</span>
         </h1>
+        {noCash ? (
+          <span className="nes-text is-error">{"Not enough cash"}</span>
+        ) : (
+          ""
+        )}
       </div>
       <div className="nes-field w-40 textCenter">
         <form onSubmit={handleSubmit}>
